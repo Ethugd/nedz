@@ -1,4 +1,4 @@
-import discord
+import discord #benis
 from discord.ext import commands
 import random
 import math
