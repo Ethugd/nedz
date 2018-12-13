@@ -2,7 +2,7 @@ import discord #benis 2
 from discord.ext import commands
 import random
 import math
-import Mytoken
+from .cfg import Mytoken
 
 description = 'Custom multi-purpose bot for Classic WoW Oceania.'
 
