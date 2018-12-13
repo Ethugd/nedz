@@ -2,7 +2,7 @@ import discord #benis 2
 from discord.ext import commands
 import random
 import math
-import token
+import Mytoken
 
 description = 'Custom multi-purpose bot for Classic WoW Oceania.'
 
@@ -81,4 +81,4 @@ async def on_raw_reaction_remove(payload): #Same shit but it's the other way aro
 
     await member.remove_roles(role, reason='Reaction role')
 
-bot.run(token.TOKEN) #bot token
+bot.run(Mytoken.TOKEN) #bot token
