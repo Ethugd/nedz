@@ -41,7 +41,7 @@ async def on_raw_reaction_add(payload): #Event fires when an emoji is added to a
     if not payload.guild_id: #Checking to see if the reaction was added in a server or dms
         return
         
-    if payload.message_id != 506826280055078913: #Checking the message id is the same to the one we want
+    if payload.message_id != 506826293719990272: #Checking the message id is the same to the one we want
         return
 
     guild = bot.get_guild(payload.guild_id)  #Getting a guild object with the id the payload gives us
@@ -64,7 +64,7 @@ async def on_raw_reaction_remove(payload): #Same shit but it's the other way aro
     if not payload.guild_id:
         return
         
-    if payload.message_id != 506826280055078913:
+    if payload.message_id != 506826293719990272:
         return
 
     guild = bot.get_guild(payload.guild_id) 
