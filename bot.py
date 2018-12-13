@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import random
 import math
+import token
 
 description = 'Custom multi-purpose bot for Classic WoW Oceania.'
 
@@ -25,7 +26,7 @@ async def on_member_join(member):
                   f"Crikey! A wild **{member.name}** has appeared.",
                   ]
     
-    embed=discord.Embed(colour=0x6ac127)#title=f"{random.choice(welcomeMsg)}", description="Check out #rules-and-info to get started.")
+    embed=discord.Embed(colour=0xf6d139)#title=f"{random.choice(welcomeMsg)}", description="Check out #rules-and-info to get started.")
     embed.add_field(name=f"{random.choice(welcomeMsg)}", value=f"Check out {channel2.mention}")
     embed.set_author(name=f"{member}", icon_url=member.avatar_url)
     embed.set_thumbnail(url=member.avatar_url)
@@ -80,4 +81,4 @@ async def on_raw_reaction_remove(payload): #Same shit but it's the other way aro
 
     await member.remove_roles(role, reason='Reaction role')
 
-bot.run("NTIyMzUyNDQxMTQ0OTAxNjMy.DvP2Pw.UI3NT4CoVzL3UBoGM7FOu7pD8vU") #bot token
+bot.run(token.TOKEN) #bot token
