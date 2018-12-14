@@ -22,13 +22,13 @@ async def on_member_join(member):
     channel2 = bot.get_channel(379611647469158400)
 
     welcomeMsg = [f"Welcome to **Classic WoW Oceania!**", 
-                  f"G'day **{member.name}**, enjoy your stay!"
-                  f"Hey **{member.name}**, thanks for joining!",
-                  f"Crikey! A wild **{member.name}** has appeared.",
+                  f"G'day mate, enjoy your stay!", 
+                  f"Hey mate, thanks for joining!", 
+                  f"Crikey! A new member has appeared.", 
                   ]
     
     embed=discord.Embed(colour=0xf6d139)#title=f"{random.choice(welcomeMsg)}", description="Check out #rules-and-info to get started.")
-    embed.add_field(name=f"{random.choice(welcomeMsg)}", value=f"Check out our {channel2.mention}")
+    embed.add_field(name=f"{random.choice(welcomeMsg)}", value=f"Please check out {channel2.mention}")
     embed.set_author(name=f"{member}", icon_url=member.avatar_url)
     embed.set_thumbnail(url=member.avatar_url)
 
