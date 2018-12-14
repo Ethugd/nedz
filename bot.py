@@ -38,48 +38,71 @@ async def on_member_join(member):
     await channel.send(embed=embed)
 
 @bot.event
-async def on_raw_reaction_add(payload): #Event fires when an emoji is added to a message regardless of it being in the bot's cache
-    if not payload.guild_id: #Checking to see if the reaction was added in a server or dms
+async def on_raw_reaction_add(payload): #
+    role = None
+    if not payload.guild_id: 
         return
-        
-    if payload.message_id != 506826293719990272: #Checking the message id is the same to the one we want
-        return
+    if payload.message_id == 523093753242714113:
+        if payload.emoji.id == 523088959312625684: 
+            role = discord.Object(506818004273725450) 
+        elif payload.emoji.id == 523089719291281408:
+            role = discord.Object(506818248168177674) 
+    elif payload.message_id == 523093774679801857:
+        if payload.emoji.id == 523077042883919875: 
+            role = discord.Object(522827107785506816) 
+        elif payload.emoji.id == 523077059480649738:
+            role = discord.Object(522827110340100096)
+        elif payload.emoji.id == 523077066946641921: 
+            role = discord.Object(522827112609087500) 
+        elif payload.emoji.id == 523077079424827395:
+            role = discord.Object(522827115645894657)
+        elif payload.emoji.id == 523077092657725444: 
+            role = discord.Object(522827118217003009) 
+        elif payload.emoji.id == 523077105018339338:
+            role = discord.Object(522827120896901123)
+        elif payload.emoji.id == 523077113851543554: 
+            role = discord.Object(522827123694764042) 
+        elif payload.emoji.id == 523077126229065728:
+            role = discord.Object(522827126693560320)
+        elif payload.emoji.id == 523077137075404801: 
+            role = discord.Object(522827129352617984)     
+    if role:
+        guild = bot.get_guild(payload.guild_id) 
+        member = guild.get_member(payload.user_id)         
+        await member.add_roles(role, reason='Reaction role') 
 
-    guild = bot.get_guild(payload.guild_id)  #Getting a guild object with the id the payload gives us
-    member = guild.get_member(payload.user_id) #Get a member object of the person who added the reaction
-
-    if payload.emoji.id == 522768968247803924: #We're checking to see if the reaction added is this. That string is the unicode code point of the check emoji 
-        role = discord.Object(506818004273725450) #Getting a role object to add to the person who added the reaction
-    elif payload.emoji.id == 522768858369753138:
-        role = discord.Object(506818248168177674)
-    elif payload.emoji.id == 522771058454167552:
-        role = discord.Object(506827520625082389)
-    else:
-        return # If the emoji added isn't the one we want
-
-    await member.add_roles(role, reason='Reaction role') #Add the role to the person who added the role
-    
-    
 @bot.event
-async def on_raw_reaction_remove(payload): #Same shit but it's the other way around, checking when a reaction is removed and then removing the role
-    if not payload.guild_id:
+async def on_raw_reaction_remove(payload): #
+    role = None
+    if not payload.guild_id: 
         return
-        
-    if payload.message_id != 506826293719990272:
-        return
-
-    guild = bot.get_guild(payload.guild_id) 
-    member = guild.get_member(payload.user_id) 
-
-    if payload.emoji.id == 522768968247803924:
-        role = discord.Object(506818004273725450)
-    elif payload.emoji.id == 522768858369753138:
-        role = discord.Object(506818248168177674)
-    elif payload.emoji.id == 522771058454167552:
-        role = discord.Object(506827520625082389)
-    else:
-        return
-
-    await member.remove_roles(role, reason='Reaction role')
+    if payload.message_id == 523093753242714113:
+        if payload.emoji.id == 523088959312625684: 
+            role = discord.Object(506818004273725450) 
+        elif payload.emoji.id == 523089719291281408:
+            role = discord.Object(506818248168177674) 
+    elif payload.message_id == 523093774679801857:
+        if payload.emoji.id == 523077042883919875: 
+            role = discord.Object(522827107785506816) 
+        elif payload.emoji.id == 523077059480649738:
+            role = discord.Object(522827110340100096)
+        elif payload.emoji.id == 523077066946641921: 
+            role = discord.Object(522827112609087500) 
+        elif payload.emoji.id == 523077079424827395:
+            role = discord.Object(522827115645894657)
+        elif payload.emoji.id == 523077092657725444: 
+            role = discord.Object(522827118217003009) 
+        elif payload.emoji.id == 523077105018339338:
+            role = discord.Object(522827120896901123)
+        elif payload.emoji.id == 523077113851543554: 
+            role = discord.Object(522827123694764042) 
+        elif payload.emoji.id == 523077126229065728:
+            role = discord.Object(522827126693560320)
+        elif payload.emoji.id == 523077137075404801: 
+            role = discord.Object(522827129352617984) 
+    if role:
+        guild = bot.get_guild(payload.guild_id) 
+        member = guild.get_member(payload.user_id)         
+        await member.remove_roles(role, reason='Reaction role')
 
 bot.run(MyToken.TOKEN) #bot token
